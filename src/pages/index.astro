@@ -3,20 +3,39 @@ import Layout from "../layouts/Layout.astro";
 ---
 <Layout title="ricadmin.io | Portfolio técnico">
   <h1 class="rgb-title">ricadmin.io</h1>
-  <p class="small">Linux • Redes • Virtualización • Seguridad • Monitoreo</p>
+  <p class="small">Notas técnicas + laboratorios reales</p>
 
   <div class="card">
-    <b>Qué es esto</b>
+    <b>En camino a Sysadmin</b>
     <p>
-      Base técnica personal + portfolio vivo. Todo explicado con mis palabras,
-      con ejemplos reales, mini-labs y proyectos.
+      Este sitio es mi base técnica personal: Linux, redes, virtualización, seguridad y monitoreo.
+      Todo explicado con mis palabras, con comandos reales, mini-labs y evidencia práctica.
     </p>
   </div>
 
   <div class="card">
-    <b>Labs / demos</b>
+    <b>Secciones</b>
     <p class="small">
-      Artículos con capturas y enlaces a demos (YouTube / X) cuando corresponda.
+      <a href={Astro.base + "/linux"}>Linux</a> ·
+      <a href={Astro.base + "/redes"}>Redes</a> ·
+      <a href={Astro.base + "/virtualizacion"}>Virtualización</a> ·
+      <a href={Astro.base + "/seguridad"}>Seguridad</a> ·
+      <a href={Astro.base + "/proyectos"}>Proyectos</a>
+    </p>
+  </div>
+
+  <div class="card">
+    <b>Cómo está escrito</b>
+    <p class="small">
+      Enfoque práctico: qué es, para qué sirve, comandos clave, mini-lab, errores típicos y preguntas tipo examen.
+    </p>
+  </div>
+
+  <div class="card">
+    <b>Enlaces</b>
+    <p class="small">
+      GitHub: <a href="https://github.com/RIcardo23B" target="_blank">RIcardo23B</a><br />
+      (Después sumamos YouTube/X cuando tengas demos publicadas)
     </p>
   </div>
 </Layout>
