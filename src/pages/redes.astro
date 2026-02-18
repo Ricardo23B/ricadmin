@@ -11,7 +11,7 @@ const sorted = posts.sort((a, b) => a.data.title.localeCompare(b.data.title));
 
   {sorted.map((p) => (
     <div class="card">
-      <div><b><a href={`${Astro.base}/linux/${p.slug}`}>{p.data.title}</a></b></div>
+      <div><b><a href={`${Astro.base}/redes/${p.slug}`}>{p.data.title}</a></b></div>
       <div class="small">Dificultad: {p.data.difficulty}</div>
       <div class="small">
         Tags: {p.data.tags.map((t, i) => (
