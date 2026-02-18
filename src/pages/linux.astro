@@ -1,6 +1,32 @@
-import { defineConfig } from "astro/config";
+---
+import Layout from "../layouts/Layout.astro";
 
-export default defineConfig({
-  site: "https://ricardo23b.github.io",
-  base: "/ricadmin",
-});
+const { getCollection } = await import("astro:content");
+const posts = await getCollection("linux");
+const sorted = posts.sort((a, b) => a.data.title.localeCompare(b.data.title));
+---
+<Layout title="Linux | ricadmin.io">
+  <h1 class="rgb-title">Linux</h1>
+  <p class="small">Fundamentos, práctica y mini-labs.</p>
+
+  {sorted.map((p) => (
+    <div class="card">
+      <div>
+        <b><a href={`${Astro.base}/linux/${p.slug}`}>{p.data.title}</a></b>
+      </div>
+
+      <div class="small">Dificultad: {p.data.difficulty}</div>
+
+      <div class="small">
+        Tags:
+        {" "}
+        {p.data.tags.map((t, i) => (
+          <span>
+            <a href={`${Astro.base}/tags/${t}`}>{t}</a>
+            {i < p.data.tags.length - 1 ? " · " : ""}
+          </span>
+        ))}
+      </div>
+    </div>
+  ))}
+</Layout>
