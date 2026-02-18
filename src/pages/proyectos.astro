@@ -2,7 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import { getCollection } from "astro:content";
 
-const posts = await getCollection("linux");
+const posts = await getCollection("proyectos");
 const sorted = posts.sort((a, b) => a.data.title.localeCompare(b.data.title));
 ---
 <Layout title="Proyectos | ricadmin.io">
