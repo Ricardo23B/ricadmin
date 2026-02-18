@@ -1,13 +1,12 @@
 ---
----
 import Layout from "../layouts/Layout.astro";
 import { getCollection } from "astro:content";
 
 const posts = await getCollection("linux");
 const sorted = posts.sort((a, b) => a.data.title.localeCompare(b.data.title));
 ---
-<Layout title="Linux | ricadmin.io">
-  <h1 class="rgb-title">Linux</h1>
+<Layout title="Proyectos | ricadmin.io">
+  <h1 class="rgb-title">Proyectos</h1>
   <p class="small">Fundamentos, práctica y mini-labs.</p>
 
   {sorted.map((p) => (

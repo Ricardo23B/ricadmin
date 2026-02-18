@@ -1,0 +1,30 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { getCollection } from "astro:content";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("linux");
+  return posts.map((p) => ({
+    params: { slug: p.slug },
+    props: { post: p },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+---
+<Layout title={`${post.data.title} | Linux | ricadmin.io`}>
+  <h1 class="rgb-title">{post.data.title}</h1>
+
+  <div class="small">Dificultad: {post.data.difficulty}</div>
+  <div class="small">
+    Tags: {post.data.tags.map((t, i) => (
+      <>
+        <a href={`${Astro.base}/tags/${t}`}>{t}</a>{i < post.data.tags.length - 1 ? " · " : ""}
+      </>
+    ))}
+  </div>
+
+  <hr />
+  <Content />
+</Layout>

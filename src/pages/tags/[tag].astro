@@ -1,0 +1,45 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { getCollection } from "astro:content";
+
+export async function getStaticPaths() {
+  const collections = ["linux", "redes", "virtualizacion", "seguridad", "proyectos"];
+  const all = [];
+  for (const c of collections) all.push(...(await getCollection(c)));
+
+  const tags = new Set();
+  for (const p of all) (p.data.tags || []).forEach((t) => tags.add(t));
+
+  return [...tags].map((tag) => ({ params: { tag } }));
+}
+
+const { tag } = Astro.params;
+
+const collections = ["linux", "redes", "virtualizacion", "seguridad", "proyectos"];
+let all = [];
+for (const c of collections) all.push(...(await getCollection(c)));
+
+const matches = all
+  .filter((p) => (p.data.tags || []).includes(tag))
+  .sort((a, b) => a.data.title.localeCompare(b.data.title));
+
+function sectionOf(p) {
+  // p.collection existe en Astro content entries
+  return p.collection; // linux/redes/etc
+}
+---
+<Layout title={`Tag: ${tag} | ricadmin.io`}>
+  <h1 class="rgb-title">Tag: {tag}</h1>
+  <p class="small">{matches.length} artículo(s)</p>
+
+  {matches.map((p) => (
+    <div class="card">
+      <div>
+        <b>
+          <a href={`${Astro.base}/${sectionOf(p)}/${p.slug}`}>{p.data.title}</a>
+        </b>
+      </div>
+      <div class="small">Sección: {sectionOf(p)} · Dificultad: {p.data.difficulty}</div>
+    </div>
+  ))}
+</Layout>
