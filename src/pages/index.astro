@@ -18,12 +18,13 @@ const BASE = import.meta.env.BASE_URL;
   <div class="card">
     <b>Secciones</b>
     <p class="small">
-      <a href={Astro.base + "/linux"}>Linux</a> ·
-      <a href={Astro.base + "/redes"}>Redes</a> ·
-      <a href={Astro.base + "/virtualizacion"}>Virtualización</a> ·
-      <a href={Astro.base + "/seguridad"}>Seguridad</a> ·
-      <a href={Astro.base + "/proyectos"}>Proyectos</a>
+      <a href={`${BASE}linux`}>Linux</a> ·
+      <a href={`${BASE}redes`}>Redes</a> ·
+      <a href={`${BASE}virtualizacion`}>Virtualización</a> ·
+      <a href={`${BASE}seguridad`}>Seguridad</a> ·
+      <a href={`${BASE}proyectos`}>Proyectos</a>
     </p>
+
   </div>
 
   <div class="card">
